@@ -682,10 +682,9 @@ namespace platf {
    * @param input The input_t instance to use.
    * @return util::point_t (x, y)
    *
-   * EXAMPLES:
-   * ```cpp
+   * @examples
    * auto [x, y] = get_mouse_loc(input);
-   * ```
+   * @end_examples
    */
   util::point_t
   get_mouse_loc(input_t &input);

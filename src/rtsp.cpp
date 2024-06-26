@@ -563,10 +563,9 @@ namespace rtsp_stream {
      * @brief Clear launch sessions.
      * @param all If true, clear all sessions. Otherwise, only clear timed out and stopped sessions.
      *
-     * EXAMPLES:
-     * ```cpp
+     * @examples
      * clear(false);
-     * ```
+     * @end_examples
      */
     void
     clear(bool all = true) {

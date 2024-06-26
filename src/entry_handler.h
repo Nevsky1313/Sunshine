@@ -1,6 +1,6 @@
 /**
  * @file entry_handler.h
- * @brief Header file for entry point functions.
+ * @brief Declarations for entry handling functions.
  */
 #pragma once
 
@@ -12,50 +12,149 @@
 #include "thread_pool.h"
 #include "thread_safe.h"
 
-// functions
+/**
+ * @brief Launch the Web UI.
+ *
+ * @examples
+ * launch_ui();
+ * @end_examples
+ */
 void
 launch_ui();
+
+/**
+ * @brief Launch the Web UI at a specific endpoint.
+ *
+ * @examples
+ * launch_ui_with_path("/pin");
+ * @end_examples
+ */
 void
 launch_ui_with_path(std::string path);
 
-#ifdef _WIN32
-// windows only functions
-bool
-is_gamestream_enabled();
-#endif
-
+/**
+ * @brief Functions for handling command line arguments.
+ */
 namespace args {
+  /**
+   * @brief Reset the user credentials.
+   *
+   * @param name The name of the program.
+   * @param argc The number of arguments.
+   * @param argv The arguments.
+   *
+   * @examples
+   * creds("sunshine", 2, {"new_username", "new_password"});
+   * @end_examples
+   */
   int
   creds(const char *name, int argc, char *argv[]);
+
+  /**
+   * @brief Print help to stdout, then exit.
+   * @param name The name of the program.
+   *
+   * @examples
+   * help("sunshine");
+   * @end_examples
+   */
   int
-  help(const char *name, int argc, char *argv[]);
+  help(const char *name);
+
+  /**
+   * @brief Print the version to stdout, then exit.
+   *
+   * @examples
+   * version();
+   * @end_examples
+   */
   int
-  version(const char *name, int argc, char *argv[]);
-#ifdef _WIN32
+  version();
+
+#if defined(_WIN32) || defined(DOXYGEN)
+  /**
+   * @brief Restore global NVIDIA control panel settings.
+   *
+   * If Sunshine was improperly terminated, this function restores
+   * the global NVIDIA control panel settings to the undo file left
+   * by Sunshine. This function is typically called by the uninstaller.
+   *
+   * @examples
+   * restore_nvprefs_undo();
+   * @end_examples
+   */
   int
-  restore_nvprefs_undo(const char *name, int argc, char *argv[]);
+  restore_nvprefs_undo();
 #endif
 }  // namespace args
 
+/**
+ * @brief Functions for handling the lifetime of Sunshine.
+ */
 namespace lifetime {
   extern char **argv;
   extern std::atomic_int desired_exit_code;
+
+  /**
+   * @brief Terminates Sunshine gracefully with the provided exit code.
+   * @param exit_code The exit code to return from main().
+   * @param async Specifies whether our termination will be non-blocking.
+   */
   void
   exit_sunshine(int exit_code, bool async);
+
+  /**
+   * @brief Breaks into the debugger or terminates Sunshine if no debugger is attached.
+   */
   void
   debug_trap();
+
+  /**
+   * @brief Get the argv array passed to main().
+   */
   char **
   get_argv();
 }  // namespace lifetime
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(DOXYGEN)
+/**
+ * @brief Check if NVIDIA's GameStream software is running.
+ * @return `true` if GameStream is enabled, `false` otherwise.
+ */
+bool
+is_gamestream_enabled();
+
+/**
+ * @brief Namespace for controlling the Sunshine service model on Windows.
+ */
 namespace service_ctrl {
+  /**
+   * @brief Check if the service is running.
+   *
+   * @examples
+   * is_service_running();
+   * @end_examples
+   */
   bool
   is_service_running();
 
+  /**
+   * @brief Start the service and wait for startup to complete.
+   *
+   * @examples
+   * start_service();
+   * @end_examples
+   */
   bool
   start_service();
 
+  /**
+   * @brief Wait for the UI to be ready after Sunshine startup.
+   *
+   * @examples
+   * wait_for_ui_ready();
+   * @end_examples
+   */
   bool
   wait_for_ui_ready();
 }  // namespace service_ctrl

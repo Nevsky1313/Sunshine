@@ -616,10 +616,9 @@ namespace nvhttp {
    * @param name The user supplied name.
    * @return `true` if the pin is correct, `false` otherwise.
    *
-   * EXAMPLES:
-   * ```cpp
+   * @examples
    * bool pin_status = nvhttp::pin("1234", "laptop");
-   * ```
+   * @end_examples
    */
   bool
   pin(std::string pin, std::string name) {
@@ -1053,10 +1052,9 @@ namespace nvhttp {
   /**
    * @brief Start the nvhttp server.
    *
-   * EXAMPLES:
-   * ```cpp
+   * @examples
    * nvhttp::start();
-   * ```
+   * @end_examples
    */
   void
   start() {
@@ -1191,10 +1189,9 @@ namespace nvhttp {
   /**
    * @brief Remove all paired clients.
    *
-   * EXAMPLES:
-   * ```cpp
+   * @examples
    * nvhttp::erase_all_clients();
-   * ```
+   * @end_examples
    */
   void
   erase_all_clients() {
@@ -1207,10 +1204,9 @@ namespace nvhttp {
   /**
    * @brief Remove single client.
    *
-   * EXAMPLES:
-   * ```cpp
+   * @examples
    * nvhttp::unpair_client("4D7BB2DD-5704-A405-B41C-891A022932E1");
-   * ```
+   * @end_examples
    */
   int
   unpair_client(std::string uuid) {

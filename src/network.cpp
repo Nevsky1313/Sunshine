@@ -232,10 +232,9 @@ namespace net {
    * @param port The port to map as a difference from the base port.
    * @return `std:uint16_t` : The mapped port number.
    *
-   * EXAMPLES:
-   * ```cpp
+   * @examples
    * std::uint16_t mapped_port = net::map_port(1);
-   * ```
+   * @end_examples
    */
   std::uint16_t
   map_port(int port) {

@@ -48,10 +48,9 @@ namespace logging {
   /**
    * @brief Deinitialize the logging system.
    *
-   * EXAMPLES:
-   * ```cpp
+   * @examples
    * deinit();
-   * ```
+   * @end_examples
    */
   void
   deinit() {
@@ -66,10 +65,9 @@ namespace logging {
    * @param log_file The log file to write to.
    * @returns A deinit_t object that will deinitialize the logging system when it goes out of scope.
    *
-   * EXAMPLES:
-   * ```cpp
+   * @examples
    * log_init(2, "sunshine.log");
-   * ```
+   * @end_examples
    */
   [[nodiscard]] std::unique_ptr<deinit_t>
   init(int min_log_level, const std::string &log_file) {
@@ -172,10 +170,9 @@ namespace logging {
   /**
    * @brief Flush the log.
    *
-   * EXAMPLES:
-   * ```cpp
+   * @examples
    * log_flush();
-   * ```
+   * @end_examples
    */
   void
   log_flush() {
@@ -188,10 +185,9 @@ namespace logging {
    * @brief Print help to stdout.
    * @param name The name of the program.
    *
-   * EXAMPLES:
-   * ```cpp
+   * @examples
    * print_help("sunshine");
-   * ```
+   * @end_examples
    */
   void
   print_help(const char *name) {

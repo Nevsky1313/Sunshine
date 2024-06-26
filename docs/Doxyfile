@@ -27,6 +27,8 @@ DOXYFILE_ENCODING = UTF-8
 # https://breathe.readthedocs.io/en/latest/markups.html#aliases
 ALIASES = "rst=^^\verbatim embed:rst:leading-asterisk^^"
 ALIASES += "endrst=\endverbatim"
+ALIASES += "examples=**Examples**\n@code{.cpp}"
+ALIASES += "end_examples=@endcode"
 
 DISABLE_INDEX = NO
 DOCBOOK_OUTPUT = doxydocbook
